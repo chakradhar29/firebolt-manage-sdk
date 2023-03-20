@@ -1,0 +1,123 @@
+{
+    "openrpc": "1.2.4",
+    "info": {
+        "title": "HDMI",
+        "description": "A module for interacting with HDMI devices",
+        "version": "0.0.0"
+    },
+    "components": {
+        "schemas": {
+            "HdmiInputList": {
+                "title": "HdmiInputList",
+                "type": "object",
+                "description": "Contains a list of hdmi devices connected to the device.",
+                "properties": {
+                    "list": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/HdmiInputInfo"
+                        }
+                    }
+                }
+            },
+            "HdmiInputInfo": {
+                "title": "HdmiInputInfo",
+                "description": "Properties of HDMI input devices connected.",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "Id of the input."
+                    },
+                    "locator": {
+                        "type": "string",
+                        "description": "Locator of the input."
+                    },
+                    "connected": {
+                        "type": "string",
+                        "description": "Connection status of the device."
+                    }
+                }
+            }
+        }
+    },
+    "methods": [
+        {
+            "name": "getAvailableInputs",
+            "summary": "Get a list of available HDMI inputs.",
+            "tags": [
+                {
+                    "name": "capabilities",
+                    "x-uses": [
+                        "xrn:firebolt:capability:hdmi:availableInputs"
+                    ]
+                }
+            ],
+            "params": [],
+            "result": {
+                "name": "list",
+                "summary": "List of available HDMI inputs.",
+                "schema": {
+                    "$ref": "#/components/schemas/HdmiInputList"
+                }
+            },
+            "examples": [
+                {
+                    "name": "List of available HDMI inputs.",
+                    "params": [],
+                    "result": {
+                        "name": "Available HDMI inputs example",
+                        "value": {
+                            "HdmiInputList": [
+                                {
+                                    "id": "0",
+                                    "uri": "hdmiin://localhost/deviceid/0",
+                                    "connected": "Disconnected"
+                                },
+                                {
+                                    "id": "1",
+                                    "uri": "hdmiin://localhost/deviceid/1",
+                                    "connected": "Connected"
+                                },
+                                {
+                                    "id": "2",
+                                    "uri": "hdmiin://localhost/deviceid/2",
+                                    "connected": "Disconnected"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "setActiveInput",
+            "summary": "Sets the active HDMI input.",
+            "tags": [
+                {
+                    "name": "capabilities",
+                    "x-uses": [
+                        "xrn:firebolt:capability:hdmi:activeInput"
+                    ]
+                }
+            ],
+            "params": [],
+            "result": {
+                "name": "connected",
+                "schema": {
+                    "type": "boolean"
+                }
+            },
+            "examples": [
+                {
+                    "name": "Set active HDMI input.",
+                    "params": [],
+                    "result": {
+                        "name": "connected",
+                        "value": true
+                    }
+                }
+            ]
+        }
+    ]
+}
