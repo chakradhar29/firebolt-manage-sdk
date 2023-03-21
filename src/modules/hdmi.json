@@ -26,7 +26,7 @@
                 "type": "object",
                 "properties": {
                     "id": {
-                        "type": "integer",
+                        "type": "string",
                         "description": "Id of the input."
                     },
                     "locator": {
@@ -71,18 +71,18 @@
                             "HdmiInputList": [
                                 {
                                     "id": "0",
-                                    "uri": "hdmiin://localhost/deviceid/0",
-                                    "connected": "Disconnected"
+                                    "locator": "hdmiin://localhost/deviceid/0",
+                                    "connected": "true"
                                 },
                                 {
                                     "id": "1",
-                                    "uri": "hdmiin://localhost/deviceid/1",
-                                    "connected": "Connected"
+                                    "locator": "hdmiin://localhost/deviceid/1",
+                                    "connected": "false"
                                 },
                                 {
                                     "id": "2",
-                                    "uri": "hdmiin://localhost/deviceid/2",
-                                    "connected": "Disconnected"
+                                    "locator": "hdmiin://localhost/deviceid/2",
+                                    "connected": "false"
                                 }
                             ]
                         }
@@ -101,7 +101,16 @@
                     ]
                 }
             ],
-            "params": [],
+            "params": [
+                {
+                    "name": "id",
+                    "summary": "The id of the port to connect to",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
             "result": {
                 "name": "connected",
                 "schema": {
@@ -111,7 +120,9 @@
             "examples": [
                 {
                     "name": "Set active HDMI input.",
-                    "params": [],
+                    "value": {
+                        "id": "0"
+                    },
                     "result": {
                         "name": "connected",
                         "value": true
