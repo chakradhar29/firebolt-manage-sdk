@@ -34,7 +34,7 @@
                         "description": "Locator of the input."
                     },
                     "connected": {
-                        "type": "string",
+                        "type": "boolean",
                         "description": "Connection status of the device."
                     }
                 }
