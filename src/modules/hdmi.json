@@ -38,29 +38,6 @@
                         "description": "Connection status of the device."
                     }
                 }
-            },
-            "Dimensions": {
-                "title": "Dimensions",
-                "description": "Dimensions the HDMI input should play at.",
-                "type": "object",
-                "properties": {
-                    "x": {
-                        "type": "integer",
-                        "description": "x position of the input."
-                    },
-                    "y": {
-                        "type": "integer",
-                        "description": "y position of the input."
-                    },
-                    "w": {
-                        "type": "integer",
-                        "description": "width of the playback"
-                    },
-                    "h": {
-                        "type": "integer",
-                        "description": "height of the playback"
-                    }
-                }
             }
         }
     },
@@ -132,13 +109,6 @@
                     "schema": {
                         "type": "string"
                     }
-                },
-                {
-                    "name": "dimensions",
-                    "summary": "Defines the dimensions of the playback",
-                    "schema": {
-                        "$ref": "#/components/schemas/Dimensions"
-                    }
                 }
             ],
             "result": {
@@ -151,13 +121,7 @@
                 {
                     "name": "Set active HDMI input.",
                     "value": {
-                        "id": "0",
-                        "dimensions": {
-                            "x": 0,
-                            "y": 0,
-                            "w": 1920,
-                            "h": 1080
-                        }
+                        "id": "0"
                     },
                     "result": {
                         "name": "connected",
